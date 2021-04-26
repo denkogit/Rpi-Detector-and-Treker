@@ -24,7 +24,7 @@ LABEL_PATH = 'labels.txt'
 
 
 class FaceDetector(BaseObjectDetector):
-    def __init__(self) -> None:
+    def __init__(self):
         super(FaceDetector, self).__init__()
     
     def detect_objects(self, interpreter, image, threshold):
@@ -108,14 +108,14 @@ def run():
     
     #create a video Path
     Video_path = "/home/pi/tflite1/itmo.mp4"
-    video_path  = f'rtsp://{}'
+    #video_path  = f'rtsp://{}'
     # open camera
     cap = cv2.VideoCapture(Video_path)
     #define FaceDetector
     face_detector = FaceDetector()
     
-    for i in range(15000):
-        _ = cap.read()
+    #for i in range(15000):
+     #   _ = cap.read()
     
     while True:
         ret, frame = cap.read()
@@ -129,11 +129,14 @@ def run():
         # run face detector on current frame
         detections = face_detector.detect_objects(interpreter, frame, 0.8)
         #print(detections)
-        logger.debug(f'detections: {detections}')
+        #logger.debug(f'detections: {detections}')
+        
 
         tracker.step(detections)
         tracks = tracker.active_tracks(min_steps_alive=3)
-        logger.debug(f'tracks: {tracks}')
+        
+        
+        #logger.debug(f'tracks: {tracks}')
         
         print("__Tracks __", type(tracks))
 
