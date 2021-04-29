@@ -1,6 +1,7 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 tfvenv/
+left35820.jpg
 
 *.py[cod]
 *$py.class
